@@ -76,6 +76,53 @@ const recipes = [
   }
 ];
 
+let activeFilter = "all";
+let activeSort = null;
+
+const filterRecipes = (recipesArray, filterType) => {
+  if (filterType === "all") return recipesArray;
+
+  if (filterType === "quick") {
+    return recipesArray.filter((r) => r.time < 30);
+  }
+
+  return recipesArray.filter((r) => r.difficulty === filterType);
+};
+const sortRecipes = (recipesArray, sortType) => {
+  const copiedArray = [...recipesArray];
+
+  if (sortType === "name") {
+    return copiedArray.sort((a, b) =>
+      a.title.localeCompare(b.title)
+    );
+  }
+
+  if (sortType === "time") {
+    return copiedArray.sort((a, b) => a.time - b.time);
+  }
+
+  return copiedArray;
+};
+const updateDisplay = () => {
+  let updatedRecipes = filterRecipes(recipes, activeFilter);
+  updatedRecipes = sortRecipes(updatedRecipes, activeSort);
+
+  renderRecipes(updatedRecipes);
+};
+
+document.querySelectorAll("[data-filter]").forEach((btn) => {
+  btn.addEventListener("click", () => {
+    activeFilter = btn.dataset.filter;
+    updateDisplay();
+  });
+});
+
+document.querySelectorAll("[data-sort]").forEach((btn) => {
+  btn.addEventListener("click", () => {
+    activeSort = btn.dataset.sort;
+    updateDisplay();
+  });
+});
 
 /* -------------------------
    Step 2: DOM Selection
@@ -126,4 +173,4 @@ const renderRecipes = (recipesArray) => {
    Step 5: Initialize the App
 -------------------------- */
 
-renderRecipes(recipes);
+updateDisplay();
