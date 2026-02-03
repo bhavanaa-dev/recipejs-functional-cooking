@@ -151,3 +151,18 @@ button {
 button:hover {
   opacity: 0.85;
 }
+.hidden {
+  display: none;
+}
+
+.steps, .ingredients {
+  margin-top: 1rem;
+  text-align: left;
+}
+
+button.toggle-steps,
+button.toggle-ingredients {
+  margin-top: 0.6rem;
+  margin-right: 0.5rem;
+  background: #764ba2;
+}
