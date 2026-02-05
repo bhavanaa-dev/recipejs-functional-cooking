@@ -124,3 +124,45 @@ main {
   background-color: #f8d7da;
   color: #721c24;
 }
+.controls {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.filter-buttons,
+.sort-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+  margin: 1rem 0;
+}
+
+button {
+  padding: 0.6rem 1rem;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  background: #667eea;
+  color: white;
+  font-weight: bold;
+}
+
+button:hover {
+  opacity: 0.85;
+}
+.hidden {
+  display: none;
+}
+
+.steps, .ingredients {
+  margin-top: 1rem;
+  text-align: left;
+}
+
+button.toggle-steps,
+button.toggle-ingredients {
+  margin-top: 0.6rem;
+  margin-right: 0.5rem;
+  background: #764ba2;
+}
